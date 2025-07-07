@@ -1,0 +1,26 @@
+<nav class="navbar">
+    <a href="/profile" class="nav-item logo">
+        <img src="https://csrbox.org/organization/org_logo/1643701493BMU%20Logo-03.png" alt="logo" class="logo">
+    </a>  
+
+    <div class="nav-item links">
+        <a href="/profile">HOME</a>
+        <a href="/shop/products">PRODUCTS</a>
+        <a href="/shop/cart">
+            CART <span class="cart-count">{{cartCount}}</span>
+        </a>
+        <a href="#">PROFILE</a>
+        {{#if users.isAdmin}}
+            <a href="/admin/add-product">ADD PRODUCTS</a>
+            <a href="/admin/products">MY PRODUCTS</a>
+        {{/if}}
+    </div>
+
+    <div class="nav-item">
+        <input type="text" placeholder="search for products">
+    </div>
+
+    <div class="nav-item">
+        <button><a href="/logout">Logout</a></button>
+    </div>
+</nav>

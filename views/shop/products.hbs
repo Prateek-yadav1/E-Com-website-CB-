@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/styles/cart.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    
+    {{>navbar}}
+
+    <div class="price-box">
+        <span class="price-heading">Total Price: </span>
+        <span class="price-value">₹{{totalPrice}}</span>
+        <button class="pay-btn">Proceed to pay</button>
+    </div>
+
+    <div class="cart-box">
+        {{#each products as |p|}}
+            <div class="cart-items">
+                <div class="image" style="background-image: url({{p.id.imageURL}});"></div>
+
+                <div class="item-details">
+                    <div class="name">{{p.id.name}}</div>
+                    <div class="price">₹{{p.id.price}} X <span class="quantity">{{p.quantity}}</span></div>
+                    <div class="btn-group">
+                        <button class="inc-btn" productId="{{p.id._id}}">+</button>
+                        <button class="dec-btn" productId="{{p.id._id}}">-</button>
+                        <button class="dlt-btn" productId="{{p.id._id}}">Delete</button>
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+
+    <script src="/scripts/cart.js"></script>
+
+</body>
+</html>

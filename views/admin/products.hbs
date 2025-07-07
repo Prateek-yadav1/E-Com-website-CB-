@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Products</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/styles/admin-product.css">
+</head>
+<body>
+    
+    {{>navbar}}
+
+    <div class="product-box">
+        {{#each products as |p|}}
+            <div class="product-details">
+            <a href="/shop/details?id={{p._id}}" target="_blank" class="product-link">
+                <div class="image" style="background-image: url({{p.imageURL}});"></div>
+                <div class="info">
+                <h2 class="name">{{p.name}}</h2>
+                <h3 class="price">Rs. {{p.price}}</h3>
+                <p class="desc">{{p.desc}}</p>
+                </div>
+            </a>
+            <div class="buttons">
+                <a href="/admin/edit?id={{p._id}}" class="edit-btn">Edit</a>
+                <a href="/admin/delete?id={{p._id}}" class="delete-btn">Delete</a>
+            </div>
+            </div>
+        {{/each}}
+    </div>
+</body>
+</html>
