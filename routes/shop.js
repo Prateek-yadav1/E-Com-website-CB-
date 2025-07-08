@@ -12,7 +12,8 @@ router.get('/addtocart',shopController.getAddToCart);
 
 
 router.get('/cart',shopController.getCart);
- router.get('/increasequantity',shopController.getIncreaseQuantity);
+
+router.get('/increasequantity',shopController.getIncreaseQuantity);
 router.get('/decreasequantity',shopController.getDecreaseQuantity);
 router.get('/deletecartitem',shopController.getDeleteCartItem);
 

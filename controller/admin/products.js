@@ -11,7 +11,7 @@ module.exports.postAddProduct = async (req,res,next)=>{
         await Products.create({
             name, 
             price, 
-            desc, 
+             desc, 
             imageURL,
             userID: req.user._id
         });
