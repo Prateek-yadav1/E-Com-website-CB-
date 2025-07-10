@@ -1,42 +1,23 @@
-const Users=require('../models/user');
+const Users = require('../models/user');
 
+module.exports.getSignup = (req, res) => {
+    res.render('signup', { msg: req.flash('msg') });
+};
 
-
-module.exports.getSignup = (req,res)=>{
-    res.render('signup',{
-        msg:req.flash('msg')
-    });
-}
-
-module.exports.postSignup = async (req,res,next)=>{
-    const {username,password}=req.body;
-try{
-    let user= await Users.findOne({username})
-    if(!user){
-        try{
-            user= await Users.create({username,password});
-             req.session.username=username;
-req.session.password=password;
-console.log(req.session);
-console.log(username,password);
-req.flash('msg','You have successfully signed up');
-   return res.redirect('/login');
-
+module.exports.postSignup = async (req, res, next) => {
+    const { username, password } = req.body;
+    try {
+        let user = await Users.findOne({ username });
+        if (!user) {
+            await Users.create({ username, password });
+            req.flash('msg', 'You have successfully signed up');
+            return res.redirect('/login');
+        } else {
+            req.flash('msg', 'Username already exists!');
+            return res.redirect('/signup');
         }
-   catch{
-    req.flash('msg','Signup not successfull, try again!');
-   return res.redirect('/signup');
-
-   }
-}
-else{
-req.flash('msg','Username already exists!');
-return res.redirect('/signup');
-}
-
-}
-catch(err){
-next(err);
-}
-
-}
+    } catch (err) {
+        req.flash('msg', 'Signup not successful, try again!');
+        return res.redirect('/signup');
+    }
+};

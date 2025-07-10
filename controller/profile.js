@@ -1,8 +1,6 @@
-module.exports.getProfile=(req,res)=>{
-    if(!req.session.username){
+module.exports.getProfile = (req, res) => {
+    if (!req.user) {
         return res.redirect('/login');
     }
-    else{
-    res.render('profile')}
-
-}
+    res.render('profile', { username: req.user.username });
+};
