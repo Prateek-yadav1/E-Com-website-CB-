@@ -17,7 +17,7 @@ module.exports.getDetails = async (req,res,next)=>{
     const {id} = req.query;
     try{
         let product = await Products.findOne({_id:id}).populate('reviews');
-        res.render('shop/product-details',{
+        res.render('shop/productDetails',{
             product
         });
     }

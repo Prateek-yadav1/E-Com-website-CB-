@@ -2,7 +2,7 @@ const Products = require('../../models/products');
 const Review = require('../../models/reviews');
 
 module.exports.getAddProduct = (req,res)=>{
-    res.render('admin/add-product')
+    res.render('admin/addproduct')
 }
 
 module.exports.postAddProduct = async (req,res,next)=>{
@@ -44,7 +44,7 @@ module.exports.getEdit = async (req,res,next)=>{
         let product = await Products.findOne({
             _id: id
         });
-        res.render('admin/edit-product',{product})
+        res.render('admin/editProduct',{product})
     }
     catch(e){
         next(e);
